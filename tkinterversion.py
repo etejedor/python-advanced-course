@@ -12,7 +12,7 @@ x2, y2 = 60, 30
 particle = w.create_oval(x,y, x2,y2, outline='yellow')
 
 def update(dt):
-    global x,y, vx, vy
+    global x,y, vx, vy, x2, y2
     oldx, oldy = x,y
     x += vx*dt
     y += vy*dt
