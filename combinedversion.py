@@ -3,15 +3,15 @@ import sys
 version = sys.argv[1]
 
 from Particle import Particle
-from Display import PygletDisplay, TkinterDisplay
-
-width, height = 600, 400 
-
-p = Particle(60, (width / 2, height / 2), (80.0, 150.0))
 
 if version == 'pyglet':
-    d = PygletDisplay(width, height, p)
+    from Display import PygletDisplay as Display
 else:
-    d = TkinterDisplay(width, height, p)
+    from Display import TkinterDisplay as Display
+
+d = Display(600, 400)
+
+d.add(Particle(60, (300, 200), (80.0, 150.0)))
+d.add(Particle(20, (100, 100), (40.0, 100.0)))
 
 d.go()

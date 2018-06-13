@@ -27,3 +27,5 @@ class Particle:
       self.y = ymin + (2*self.r + (ymin - self.y))
       self.vy = - self.vy
 
+  def draw(self, display):
+    display.draw_circle(self.x, self.y, self.r) 
