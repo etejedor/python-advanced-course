@@ -17,10 +17,13 @@ class Cons:
       return 1
     return 1 + len(self.tail)
 
-  def __iter__(self):
-    return ConsIterator(self)
+  def __iter__(self): # Every time we call this function if will return a new generator (iterator)
+    cons = self
+    while cons is not None:
+      yield cons.item  # Having a yield in a function means the function will return a generator when called
+      cons = cons.tail
 
-
+# We do not need the class below anymore
 # Having the iterator as a separate class makes it possible to have two iterator objects that
 # are independent
 # If we implement __next__ in the Cons class, multiple iterators will depend on each other
