@@ -1,16 +1,16 @@
 
-from context_manager import MyRaises
+from context_manager import MyRaises_generator as MyRaises
 
 def test_raises():
   with MyRaises(ZeroDivisionError):
     2/0
-  assert(True)
+  assert True
 
 def test_no_raises():
   try:
     with MyRaises(IndexError):
       2/0
   except AssertionError:
-    assert(True)
+    assert True
   else:
-    assert(False)
+    assert False
