@@ -41,7 +41,7 @@ class PygletDisplay(Display):
                                    (0, self.width, 0, self.height))
     pyglet.app.run()
 
-  def draw_circle(self, x, y, r): 
+  def draw_circle(self, x, y, r, c): 
     def circle_vertices():
       delta_angle = twopi / 20
       angle = 0
@@ -50,7 +50,8 @@ class PygletDisplay(Display):
         yield y + r * sin(angle)
         angle += delta_angle
 
-    pyglet.gl.glColor3f(1.0, 1.0, 0)
+    #pyglet.gl.glColor3f(1.0, 1.0, 0)
+    pyglet.gl.glColor3f(*c.as_rgb_01())
     pyglet.graphics.draw(20, pyglet.gl.GL_LINE_LOOP,
                          ('v2f', tuple(circle_vertices())))
 
@@ -78,5 +79,5 @@ class TkinterDisplay(Display):
     self.update(0, (0, self.width, 0, self.height))
     tk.mainloop()
 
-  def draw_circle(self, x, y, r):
-    self._window.create_oval(x-r, y-r, x+r, y+r, outline='yellow')
+  def draw_circle(self, x, y, r, c):
+    self._window.create_oval(x-r, y-r, x+r, y+r, outline=str("#" + c.as_rgb_f()))

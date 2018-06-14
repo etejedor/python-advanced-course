@@ -1,9 +1,10 @@
 class Particle:
 
-  def __init__(self, r, pos, vel):
+  def __init__(self, r, pos, vel, colour):
     self.r = r
     self.x, self.y = pos
     self.vx, self.vy = vel
+    self.colour = colour
 
   def move(self, dt):
     self.x = self.x + dt * self.vx
@@ -28,4 +29,4 @@ class Particle:
       self.vy = - self.vy
 
   def draw(self, display):
-    display.draw_circle(self.x, self.y, self.r) 
+    display.draw_circle(self.x, self.y, self.r, self.colour) 
