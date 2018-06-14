@@ -13,9 +13,10 @@ class Cons:
     return self.tail[pos-1]
 
   def __len__(self):
-    if self.tail is None:
-      return 1
-    return 1 + len(self.tail)
+    return sum(1 for elem in self) # lazy
+    #if self.tail is None:
+    #  return 1
+    #return 1 + len(self.tail)
 
   def __iter__(self): # Every time we call this function if will return a new generator (iterator)
     cons = self
